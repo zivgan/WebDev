@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Article(models.Model):
@@ -7,6 +8,10 @@ class Article(models.Model):
     date_time = models.DateTimeField(auto_now_add = True) #blog time
     content = models.TextField(blank = True, null = True) # blog article
 
+    #getURL and transmit the format of url
+    def get_absolute_url(self):
+        path = reverse('detail', kwargs={'id':self.id})
+        return "http://127.0.0.1:8000%s" % path
     #python2 use__unicode__, pythons use __str__
     def __str__(self):
         return self.title

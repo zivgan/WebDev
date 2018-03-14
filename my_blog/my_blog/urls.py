@@ -20,6 +20,9 @@ from article import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home),
-    path('<int:my_args>', views.detail, name='detail'),
+    path('', views.home, name='home'),
+    path('<int:id>', views.detail, name='detail'),
+    path('archives/', views.archives, name = 'archives'),
+    path('aboutme/', views.about_me, name = 'about_me'),
+    path('(?P<slug>[^/]+)$', views.search_tag, name = 'search_tag'),
 ]
